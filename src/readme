@@ -1,0 +1,30 @@
+composer self-update
+composer require server --dev
+composer create-project symfony/skeleton <project name>
+composer create-project symfony/website-skeleton <project name>
+composer require symfony/maker-bundle --dev
+composer require doctrine/annotations
+
+composer require doctrine maker
+php bin/console make:controller DefaultController
+composer require symfony/apache-pack
+
+
+composer require dump
+symfony serve
+symfony.exe server:ca:install
+composer require twig
+composer require orm
+php bin/console make:entity
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:schema:update --dump-sql
+php bin/console doctrine:schema:create
+
+
+php bin/console debug:router
+
+composer require asset
+php bin/console make:entity --regenerate
+
+
+

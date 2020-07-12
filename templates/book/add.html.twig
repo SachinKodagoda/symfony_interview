@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add book{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('resources/css/book_add.css') }}">{% endblock %}
+
+{% block body %}
+    <div class="custom_form-cover">
+        <form class="ui form">
+            <div class="field">
+                <label>Book</label>
+                <input type="text" name="book-name" placeholder="Book Name">
+            </div>
+            <div class="field">
+                <label>Price</label>
+                <div class="ui right labeled input">
+                    <label for="amount" class="ui label">LKR</label>
+                    <input type="number" placeholder="Price Value" id="amount" name="book-price">
+                    <div class="ui basic label">.00</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Author</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="book-author">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Author Name</div>
+                    <div class="menu">
+                        <div class="item" data-value="Sachin">Sachin</div>
+                        <div class="item" data-value="Abinaya">Abinaya</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Description</label>
+                <textarea id="editor" rows="2" name="book-description"></textarea>
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('resources/js/book_add.js') }}"></script>
+{% endblock %}
+

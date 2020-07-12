@@ -1,0 +1,28 @@
+.custom_form-cover{
+    width: 100%;
+    margin: 5rem auto 0 auto;
+    padding: 0 1rem;
+}
+
+@media only screen and (min-width: 576px) {
+}
+
+@media only screen and (min-width: 769px) {
+    .custom_form-cover{
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1201px) {
+    .custom_form-cover{
+        width: 30rem;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+
+}
