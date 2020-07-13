@@ -44,10 +44,36 @@ class Book
 
 
     /**
-     * One Book has One Author.
-     * @OneToOne(targetEntity="Author", mappedBy="book")
+     * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
+     * @ORM\JoinColumn(name="author", referencedColumnName="id")
      */
     private $author;
+
+    /**
+     * @ORM\Column(type="integer", options={"default" : 1})
+     */
+    private $availability;
+
+    /**
+     * @ORM\Column(type="integer", options={"default" : 0})
+     */
+    private $discount;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $isbn;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $publisher;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $publishedDate;
+
 
     public function getId(): ?int
     {
@@ -77,7 +103,6 @@ class Book
 
         return $this;
     }
-
 
     public function getImage(): ?string
     {
@@ -114,4 +139,78 @@ class Book
 
         return $this;
     }
+
+    public function getAvailability(): ?int
+    {
+        return $this->availability;
+    }
+
+    public function setAvailability(int $availability): self
+    {
+        $this->availability = $availability;
+
+        return $this;
+    }
+
+    public function getDiscount(): ?int
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount(int $discount): self
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getIsbn(): ?string
+    {
+        return $this->isbn;
+    }
+
+    public function setIsbn(string $isbn): self
+    {
+        $this->isbn = $isbn;
+
+        return $this;
+    }
+
+    public function getPublisher(): ?string
+    {
+        return $this->publisher;
+    }
+
+    public function setPublisher(string $publisher): self
+    {
+        $this->publisher = $publisher;
+
+        return $this;
+    }
+
+    public function getPublishedDate(): ?\DateTimeInterface
+    {
+        return $this->publishedDate;
+    }
+
+    public function setPublishedDate(\DateTimeInterface $publishedDate): self
+    {
+        $this->publishedDate = $publishedDate;
+
+        return $this;
+    }
+
+    
 }

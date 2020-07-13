@@ -1,0 +1,37 @@
+.custom_book_cover{
+    padding-top: 5rem;
+}
+
+.custom_breadcrumb{
+    padding-left: 1rem;
+    padding-top: 1rem;
+
+}
+
+.custom_avail_yes{
+    color: green;
+}
+
+.custom_avail_no{
+    color: red;
+}
+
+.custom_price_cover{
+    margin: 2rem 0;
+}
+
+.custom_new_price{
+    color: green;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.custom_old_price{
+    color: gray;
+    font-size: 1.5rem;
+    text-decoration: line-through;
+}
+
+.custom_common_right{
+    color: green;
+}

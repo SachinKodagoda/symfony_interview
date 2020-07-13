@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show book{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('resources/css/book_show.css') }}">{% endblock %}
+
+{% block body %}
+    <div class="ui breadcrumb custom_breadcrumb">
+        <a class="section" href="{{ path('book.index') }}">Home</a>
+        <i class="right angle icon divider"></i>
+        <div class="active section">{{ book.name }}</div>
+    </div>
+    <div class="custom_book_cover">
+        <div class="ui two column centered grid">
+            <div class="four column centered row">
+                <div class="column">
+                    <img src="{{ asset('resources/images/') }}{{ book.image }}" alt="book">
+                </div>
+                <div class="column">
+                    <h2>{{ book.name }}</h2>
+                    <p>Author: </p>
+                    <p>ISBN: {{ book.isbn|number_format(0, '.', '-') }}</p>
+                    <p>Category: </p>
+                    <p>Availability:
+                        <span class="{{ book.availability == 1 ? 'custom_avail_yes' : 'custom_avail_no' }}">
+                            {{ book.availability == 1 ? 'In Stock' : 'Out of Stock' }}
+                        </span>
+                    </p>
+                    <p>Rating:
+                        <div class="ui star rating" data-rating="{{ book.rating }}"></div>
+                    </p>
+                    <p class="custom_price_cover">
+
+                        {% if book.discount > 0 %}
+                            <span class="custom_new_price">
+                                    {{ (book.price * (100 - book.discount))/100.0 }} LKR
+                            </span>
+                            <span class="custom_old_price">
+                                {{ book.price|number_format(2) }} LKR
+                            </span>
+                        {% else %}
+                            <span class="custom_new_price">
+                                    {{ book.price|number_format(2) }} LKR
+                            </span>
+                        {% endif %}
+                    </p>
+                    <p>Publisher: <span class="custom_common_right">{{ book.publisher }}</span></p>
+                    <p>Published On: <span class="custom_common_right">{{ book.publishedDate|date("m/d/Y") }}</span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('resources/js/book_show.js') }}"></script>
+{% endblock %}
+

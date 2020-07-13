@@ -2,7 +2,11 @@
 
 {% block title %}Add book{% endblock %}
 
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('resources/css/book_add.css') }}">{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('resources/css/book_create.css') }}">{% endblock %}
+
+{% block navbar %}
+    {{ include('inc/navbar.html.twig') }}
+{% endblock %}
 
 {% block body %}
     <div class="custom_form-cover">
@@ -44,6 +48,6 @@
 
 {% block javascripts %}
     <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
-    <script src="{{ asset('resources/js/book_add.js') }}"></script>
+    <script src="{{ asset('resources/js/book_create.js') }}"></script>
 {% endblock %}
 

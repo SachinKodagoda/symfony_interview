@@ -1,7 +1,7 @@
 <div class="ui secondary  menu">
-    <a class="item {{ active == 'home' ? 'active': '' }}" href="{{ path('book.get') }}">Home</a>
-    <a class="item {{ active == 'add' ? 'active': '' }}" href="{{ path('book.add') }}">Add</a>
-    <a class="item {{ active == 'cart' ? 'active': '' }}">Cart</a>
+    <a class="item {{ active == 'home' ? 'active': '' }}" href="{{ path('book.index') }}">HOME</a>
+    <a class="item {{ active == 'create' ? 'active': '' }}" href="{{ path('book.create') }}">CREATE</a>
+    <a class="item {{ active == 'cart' ? 'active': '' }}">CART</a>
     <div class="right menu">
         <div class="item">
             <div class="ui icon input">

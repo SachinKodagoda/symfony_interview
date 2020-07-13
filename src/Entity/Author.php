@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,10 +30,13 @@ class Author
     private $description;
 
     /**
-     * One Author has many books. This is the inverse side.
-     * @OneToMany(targetEntity="Book", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Book", mappedBy="author")
      */
-    private $book;
+    private $books;
+
+    public function __construct() {
+        $this->books = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -58,6 +63,37 @@ class Author
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
+    }
+
+    public function addBook(Book $book): self
+    {
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Book $book): self
+    {
+        if ($this->books->contains($book)) {
+            $this->books->removeElement($book);
+            // set the owning side to null (unless already changed)
+            if ($book->getAuthor() === $this) {
+                $book->setAuthor(null);
+            }
+        }
 
         return $this;
     }
