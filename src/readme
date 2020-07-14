@@ -27,4 +27,20 @@ composer require asset
 php bin/console make:entity --regenerate
 
 
+composer require form validator
+composer update
 
+
+
+INSERT INTO `book` (`id`, `name`, `description`, `image`, `price`, `rating`, `author`, `availability`, `discount`, `isbn`, `publisher`, `published_date`) VALUES (NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08');
+INSERT INTO `book` (`id`, `name`, `description`, `image`, `price`, `rating`, `author`, `availability`, `discount`, `isbn`, `publisher`, `published_date`) VALUES (NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
+(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08');
+
+
+
+INSERT INTO `category` (`id`, `name`, `description`) VALUES (NULL, 'Children', "The genre encompasses a wide range of works, including acknowledged classics of world literature, picture books and easy-to-read stories written exclusively for children."), (NULL, 'Friction', "Fiction refers to literature created from the imagination. Mysteries, science fiction, romance, fantasy, chick lit, crime thrillers are all fiction genres.")

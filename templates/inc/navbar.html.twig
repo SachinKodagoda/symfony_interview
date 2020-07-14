@@ -1,16 +1,20 @@
-<div class="ui secondary  menu">
-    <a class="item {{ active == 'home' ? 'active': '' }}" href="{{ path('book.index') }}">HOME</a>
-    <a class="item {{ active == 'create' ? 'active': '' }}" href="{{ path('book.create') }}">CREATE</a>
-    <a class="item {{ active == 'cart' ? 'active': '' }}">CART</a>
-    <div class="right menu">
-        <div class="item">
-            <div class="ui icon input">
-                <input type="text" placeholder="Search...">
-                <i class="search link icon"></i>
-            </div>
+<div class="company">
+
+    <div class="company_flex">
+        <div class="company_flex_left">
+            <img src="{{ asset('resources/images/headset.svg') }}" class="company_headset" alt="headset"/>
+            <span class="company_247">We are 24/7</span><br/>
+            <span class="company_contact">+94-765742200</span>
         </div>
-        <a class="ui item">
-            Logout
-        </a>
+        <img src="{{ asset('resources/images/logo2.jpg') }}" class="company_logo" alt="logo"/>
+        <div>
+            <div class="cart_cover">
+                <div class="added_items">{{ cart_count }}</div>
+                <img src="{{ asset('resources/images/cart1.svg') }}" class="company_cart" alt="cart"/><br/>
+            </div>
+            <span class="company_add_to_cart">My Cart</span><br/>
+        </div>
     </div>
+    <div class="company_border_cover1"></div>
+    <div class="company_border_cover2"></div>
 </div>

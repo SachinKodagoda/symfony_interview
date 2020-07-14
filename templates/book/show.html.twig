@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Show book{% endblock %}
-
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('resources/css/book_show.css') }}">{% endblock %}
 
@@ -19,17 +17,21 @@
                 </div>
                 <div class="column">
                     <h2>{{ book.name }}</h2>
-                    <p>Author: </p>
-                    <p>ISBN: {{ book.isbn|number_format(0, '.', '-') }}</p>
-                    <p>Category: </p>
+                    <p>{{ book.description }}</p>
+                    <hr/>
+                    <p>Author: <span class="custom_common_right">{{ book.author.name }}</span></p>
+                    <p>About the author: <span class="custom_common_right">{{ book.author.description }}</span></p>
+                    <p>ISBN: <span class="custom_common_right">{{ book.isbn|number_format(0, '.', '-') }}</span></p>
+                    <p>Category: <span class="custom_common_right">{{ book.category.name }}</span></p>
                     <p>Availability:
                         <span class="{{ book.availability == 1 ? 'custom_avail_yes' : 'custom_avail_no' }}">
                             {{ book.availability == 1 ? 'In Stock' : 'Out of Stock' }}
                         </span>
                     </p>
-                    <p>Rating:
-                        <div class="ui star rating" data-rating="{{ book.rating }}"></div>
-                    </p>
+                    <p>Publisher: <span class="custom_common_right">{{ book.publisher }}</span></p>
+                    <p>Published On: <span class="custom_common_right">{{ book.publishedDate|date("m/d/Y") }}</span></p>
+                    <hr/>
+                    <p>Rating: <span class="ui star rating" data-rating="{{ book.rating }}"></span></p>
                     <p class="custom_price_cover">
 
                         {% if book.discount > 0 %}
@@ -45,9 +47,6 @@
                             </span>
                         {% endif %}
                     </p>
-                    <p>Publisher: <span class="custom_common_right">{{ book.publisher }}</span></p>
-                    <p>Published On: <span class="custom_common_right">{{ book.publishedDate|date("m/d/Y") }}</span></p>
-
                 </div>
             </div>
         </div>

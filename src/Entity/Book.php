@@ -42,6 +42,11 @@ class Book
      */
     private $rating;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="books")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id")
+     */
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
@@ -208,6 +213,18 @@ class Book
     public function setPublishedDate(\DateTimeInterface $publishedDate): self
     {
         $this->publishedDate = $publishedDate;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

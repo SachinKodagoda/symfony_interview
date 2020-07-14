@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Entity\Category;
+use App\Form\BookType;
 use App\Repository\BookRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/book", name="book.")
@@ -17,16 +21,26 @@ class BookController extends AbstractController
     /**
      * @Route("/", name="index", methods={"GET"})
      * @param BookRepository $bookRepository
+     * @param Request $request
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function index(BookRepository $bookRepository)
+    public function index(BookRepository $bookRepository, Request $request, CategoryRepository $categoryRepository)
     {
-
-        $books = $bookRepository->findAll();
-
+        $category_id = $request->query->get('category');
+        $active = 'home';
+        $books = null;
+        if(isset($category_id) && !empty($category_id)){
+            $books = $categoryRepository->find($category_id)->getBooks();
+            $active = $category_id;
+        }else{
+            $books = $bookRepository->findAll();
+        }
         return $this->render('book/index.html.twig', [
             'books' => $books,
-            'active' => 'home'
+            'active' => $active,
+            'categories' => $categoryRepository->findAll(),
+            'cart_count' => 0
         ]);
     }
 
@@ -43,13 +57,28 @@ class BookController extends AbstractController
 
     /**
      * @Route("/", name="store", methods={"POST"})
+     * @param Request $request
+     * @param BookRepository $bookRepository
      * @return Response
      */
-    public function store()
+    public function store(Request $request, BookRepository $bookRepository)
     {
-        return $this->render('book/create.html.twig', [
-            'active' => 'add'
-        ]);
+        $book = new Book();
+//        $book->setAuthor();
+//        $book->setAvailability();
+//        $book->setDescription();
+//        $book->setDiscount();
+//        $book->setName();
+//        $book->setIsbn();
+//        $book->setImage();
+//        $book->setPrice();
+//        $book->setPublishedDate();
+//        $book->setPublisher();
+//        $book->setRating();
+//        $em = $this->getDoctrine()->getManager();
+//        $em->persist($book);
+//        $em->flush();
+        return $this->redirect($this->generateUrl('book.index'));
     }
 
     /**
@@ -62,7 +91,9 @@ class BookController extends AbstractController
     {
         $book = $bookRepository->find($id);
         return $this->render('book/show.html.twig', [
-            'book' => $book
+            'book' => $book,
+            'author' => $book->getAuthor(),
+            'cart_count' => 0
         ]);
     }
 
@@ -91,13 +122,18 @@ class BookController extends AbstractController
 
     /**
      * @Route("/{id}", name="destroy", methods={"DELETE"})
+     * @param $id
+     * @param BookRepository $bookRepository
      * @return Response
      */
-    public function destroy()
+    public function destroy($id, BookRepository $bookRepository)
     {
-        return $this->render('book/create.html.twig', [
-            'active' => 'add'
-        ]);
+        $book = $bookRepository->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($book);
+        $em->flush();
+        $this->addFlash('success', 'Book was successfully removed');
+        return $this->redirect($this->generateUrl('book.index'));
     }
 
 }

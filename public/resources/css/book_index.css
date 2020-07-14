@@ -1,8 +1,36 @@
 .custom_card{
-    width: 14rem !important;
+    width: 15rem !important;
 }
 
 .book_image{
     /*height: 10rem !important;*/
     /*width: 5rem !important;*/
+}
+
+.custom_flash{
+    position: fixed !important;
+    bottom: 0rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    text-align: center;
+    z-index: 10;
+}
+
+.custom_index_cover{
+    padding: 1rem;
+}
+
+.custom_menu_body{
+    background: #FBFBFA !important;
+    border-color: #172B5C !important;
+}
+
+.custom_head{
+    background: #FBFBFA !important;
+    border-color: #172B5C !important;
+}
+
+.ui.tabular.menu{
+    border-color: #172B5C !important;
 }

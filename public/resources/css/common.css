@@ -1,0 +1,73 @@
+.company_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.company_headset {
+    width: 3rem;
+    height: auto;
+}
+
+.company_247 {
+    padding: 0 .5rem;
+    font-size: 2rem;
+    font-family: 'Galada', cursive;
+    color: #172B5C;
+    display: inline-block;
+}
+
+.cart_cover {
+    position: relative;
+}
+
+.added_items {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -0.5rem;
+    top: 60%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    background: #172B5C;
+    color: #fff;
+}
+
+.company_cart {
+    width: 5rem;
+    height: auto;
+}
+
+.company_add_to_cart {
+    font-size: 2rem;
+    font-family: 'Galada', cursive;
+    color: #172B5C;
+    margin-top: .5rem;
+    display: block;
+}
+
+.company_contact {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #172B5C;
+}
+
+.company_border_cover1 {
+    height: 1.2rem;
+    background: rgb(34, 64, 137);
+}
+
+.company_border_cover2 {
+    margin-top: .5rem;
+    height: .4rem;
+    background: rgb(34, 64, 137);
+}
+
+.company_logo {
+    height: 14rem;
+    width: auto;
+}

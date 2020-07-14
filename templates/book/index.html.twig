@@ -1,40 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BookController!{% endblock %}
-
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('resources/css/book_index.css') }}">{% endblock %}
 
-{% block navbar %}
-    {{ include('inc/navbar.html.twig') }}
-{% endblock %}
-
 {% block body %}
-    <div class="ui cards">
-        {% for book in books %}
-            <div class="card custom_card">
-                <a class="image" href="{{ path('book.show',{ id : book.id }) }}">
-                    <img src="{{ asset('resources/images/') }}{{ book.image }}" alt="books" class="book_image">
-                </a>
-                <div class="content">
-                    <div class="header">{{ book.name }}</div>
-                    <div class="meta">author</div>
-                    <div class="description">
-                        {{ book.description }}
+    {% for message in app.flashes('success') %}
+        <div class="ui green message custom_flash hide_me_in">{{ message }}</div>
+    {% endfor %}
+
+    <div class="custom_index_cover">
+        <div class="ui top attached tabular menu">
+            <a class="{{ active=='home' ? 'active custom_head' : '' }} item" href="{{ path('book.index') }}">All</a>
+            {% for category in categories %}
+                <a class="{{ active==category.id ? 'active custom_head' : '' }} item" href="{{ path('book.index') }}?category={{ category.id }}">{{ category.name }}</a>
+            {% endfor %}
+
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui transparent icon input">
+                        <input type="text" placeholder="Search users...">
+                        <i class="search link icon"></i>
                     </div>
                 </div>
-                <div class="extra">
-                    Rating:
-                    <div class="ui star rating" data-rating="{{ book.rating }}"></div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">{{ book.price }} LKR</span>
-                    <span>
+            </div>
+        </div>
+        <div class="ui bottom attached segment custom_menu_body">
+            <div class="ui cards">
+                {% for book in books %}
+                    <div class="card custom_card">
+                        <a class="image" href="{{ path('book.show',{ id : book.id }) }}">
+                            <img src="{{ asset('resources/images/') }}{{ book.image }}" alt="books" class="book_image">
+                        </a>
+                        <div class="content">
+                            <div class="header">{{ book.name }}</div>
+                            <div class="meta">author</div>
+                            <div class="description">
+                                {{ book.description }}
+                            </div>
+                        </div>
+                        <div class="extra">
+                            Rating:
+                            <div class="ui star rating" data-rating="{{ book.rating }}"></div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">{{ book.price }} LKR</span>
+                            <span>
                         <i class="user icon"></i>75 sales
                     </span>
-                </div>
+                        </div>
+                        {#<div>#}
+                        {#  <form action="{{ path('book.destroy',{ id : book.id }) }}" method="post">#}
+                        {#      <input type="hidden" name="_method" value="DELETE"/>#}
+                        {#      <input type="submit" value="OK">#}
+                        {#  </form>#}
+                        {#</div>#}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
 {% endblock %}
 
