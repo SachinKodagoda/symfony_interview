@@ -1,10 +1,8 @@
-composer self-update
+
 composer require server --dev
-composer create-project symfony/skeleton <project name>
-composer create-project symfony/website-skeleton <project name>
 composer require symfony/maker-bundle --dev
 composer require doctrine/annotations
-composer update
+
 composer require twig
 composer require symfony/twig-pack
 composer require orm
@@ -21,18 +19,17 @@ composer require sec-checker --dev
 composer require profiler --dev
 composer require symfony/profiler-pack --dev
 
-symfony serve
-php -S 127.0.0.1:8000 -t public/
-symfony.exe server:ca:install
-symfony console
+symfony check:req
 
-php bin/console m:e
-php bin/console make:entity
 php bin/console d:s:u --force
 php bin/console doctrine:schema:update --force
 php bin/console doctrine:schema:update --dump-sql
 php bin/console doctrine:schema:create
+
 php bin/console debug:router
+
+php bin/console make:entity
+php bin/console m:e
 php bin/console make:entity --regenerate
 php bin/console make:user
 php bin/console make:migration
@@ -42,56 +39,19 @@ php bin/console make:fixtures
 php bin/console make:fix
 php bin/console security:encode-password
 php bin/console cache:clear
-
-symfony new will create git init also
-git log
-git show --name-only
-git diff composer.json
-
-symfony check:req
-symfony serve --help
-symfony serve -d
-to run background
-symfony server:status
-symfony server:stop
-composer install
-composer recipes
-composer recipes doctrine/annotations
-composer remove sec-checker
-composer require debug --dev
-
 php bin/console server:dump
-composer unpack symfony/debug-pack
-
-php bin/console router:match <url>
-that is used when there is an error with the url to check
-
-php bin/console router:match <url> --method=POST
-that is used when there is an error with the url to check with post method
-ex: /book/2
 
 
-php bin/console debug:autowiring
-gives all the srevice objects of the app
 
-php bin/console debug:autowiring log
-services(objects) that allow log features
 
-composer require encore
-set up all environment for webpack-encore which is a layer for webpack
 
-npm run dev
-npm add jquery --dev
-npm add bootstrap --dev
-this has js and css
 
-@import "~bootstrap";
 
-{{ encore_entry_script_tags('app')}}
 
-dd => dump and die
 
-./bin/console debug:autowiring
+
+
+
 
 INSERT INTO author
 (id,name,description) VALUES
