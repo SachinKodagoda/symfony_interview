@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('resources/css/security_login.css') }}">{% endblock %}
+
+{% block body %}
+    <div class="customLoginFormCover">
+        <form class="ui form customLoginForm" action="{{ path('login') }}" method="POST">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="field">
+                <label>User name</label>
+                <input type="text" name="_username" placeholder="User Name" value="{{ last_username }}">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="_password" placeholder="Password">
+            </div>
+            {% if error %}
+                <div class="errormessage">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <button class="ui primary button makeMeCenter" type="submit">Login</button>
+        </form>
+    </div>
+{% endblock %}

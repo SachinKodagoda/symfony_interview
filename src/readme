@@ -4,43 +4,123 @@ composer create-project symfony/skeleton <project name>
 composer create-project symfony/website-skeleton <project name>
 composer require symfony/maker-bundle --dev
 composer require doctrine/annotations
-
-composer require doctrine maker
-php bin/console make:controller DefaultController
-composer require symfony/apache-pack
-
-
-composer require dump
-symfony serve
-symfony.exe server:ca:install
+composer update
 composer require twig
+composer require symfony/twig-pack
 composer require orm
+composer require asset
+composer require form validator
+composer require symfony/twig-pack
+composer require doctrine maker
+composer require dump
+composer require symfony/apache-pack
+composer require security
+
+composer require orm-fixtures --dev
+composer require sec-checker --dev
+composer require profiler --dev
+composer require symfony/profiler-pack --dev
+
+symfony serve
+php -S 127.0.0.1:8000 -t public/
+symfony.exe server:ca:install
+symfony console
+
+php bin/console m:e
 php bin/console make:entity
+php bin/console d:s:u --force
 php bin/console doctrine:schema:update --force
 php bin/console doctrine:schema:update --dump-sql
 php bin/console doctrine:schema:create
-
-
 php bin/console debug:router
-
-composer require asset
 php bin/console make:entity --regenerate
+php bin/console make:user
+php bin/console make:migration
+php bin/console make:controller DefaultController
+php bin/console make:auth
+php bin/console make:fixtures
+php bin/console make:fix
+php bin/console security:encode-password
+php bin/console cache:clear
+
+symfony new will create git init also
+git log
+git show --name-only
+git diff composer.json
+
+symfony check:req
+symfony serve --help
+symfony serve -d
+to run background
+symfony server:status
+symfony server:stop
+composer install
+composer recipes
+composer recipes doctrine/annotations
+composer remove sec-checker
+composer require debug --dev
+
+php bin/console server:dump
+composer unpack symfony/debug-pack
+
+php bin/console router:match <url>
+that is used when there is an error with the url to check
+
+php bin/console router:match <url> --method=POST
+that is used when there is an error with the url to check with post method
+ex: /book/2
 
 
-composer require form validator
-composer update
+php bin/console debug:autowiring
+gives all the srevice objects of the app
 
+php bin/console debug:autowiring log
+services(objects) that allow log features
 
+composer require encore
+set up all environment for webpack-encore which is a layer for webpack
 
-INSERT INTO `book` (`id`, `name`, `description`, `image`, `price`, `rating`, `author`, `availability`, `discount`, `isbn`, `publisher`, `published_date`) VALUES (NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08');
-INSERT INTO `book` (`id`, `name`, `description`, `image`, `price`, `rating`, `author`, `availability`, `discount`, `isbn`, `publisher`, `published_date`) VALUES (NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08'),
-(NULL, 'Famous Five', 'About five children who does investigations', 'wildlife.jpg', '75', '0', '1', '1', '0', '9781444907958', 'Malpiyali', '2020-07-08');
+npm run dev
+npm add jquery --dev
+npm add bootstrap --dev
+this has js and css
 
+@import "~bootstrap";
 
+{{ encore_entry_script_tags('app')}}
 
-INSERT INTO `category` (`id`, `name`, `description`) VALUES (NULL, 'Children', "The genre encompasses a wide range of works, including acknowledged classics of world literature, picture books and easy-to-read stories written exclusively for children."), (NULL, 'Friction', "Fiction refers to literature created from the imagination. Mysteries, science fiction, romance, fantasy, chick lit, crime thrillers are all fiction genres.")
+dd => dump and die
+
+./bin/console debug:autowiring
+
+INSERT INTO author
+(id,name,description) VALUES
+(1,"J. K. Rowling", "A great British author"),
+(2,"Roald Dahl", "A great U.K author"),
+(3,"C. S. Lewis", "A great Englend author"),
+(4,"E. B. White", "A great British author");
+
+INSERT INTO category
+(id,name,description) VALUES
+(1,"Children", "Books of children"),
+(2,"Friction", "Books of Science,Mistry");
+
+INSERT INTO book
+(category, name, description, image,                                                                                                   price, rating, author, availability, discount, isbn, publisher, published_date) VALUES
+(1,"Harry Potter and the Philosopher's Stone", "it is a fantasy novel written by British author J. K. Rowling.",                  'image1.png', '7000', '4', '1', '1', '5', '9781444907951', 'Bloomsbury', '2003-07-26'),
+(1,"Charlie and the Chocolate Factory", "it is a fantasy novel written by British author J. K. Rowling.",                         'image2.jpg', '7500', '3', '2', '0', '10', '9781444907952', 'Bloomsbury', '1964-10-04'),
+
+(1,"The Lion, the Witch and the Wardrobe", "The Lion, the Witch and the Wardrobe is a fantasy novel for children by C. S. Lewis.",'image3.jpg', '6000', '2', '3', '1', '10', '9781444907953', 'Bloomsbury', '1963-09-17'),
+(1,"Charlotte's Web", "The Lion, the Witch and the Wardrobe is a fantasy novel for children by C. S. Lewis.",                     'image4.jpg', '8000', '4', '4', '1', '10', '9781444907954', 'Bloomsbury', '1964-08-05'),
+(1,"Matilda", "Matilda is a book by British writer Roald Dahl",                                                                   'image5.jpg', '4000', '1', '2', '1', '5', '9781444907955', 'Bloomsbury', '1952-07-11'),
+(1,"The BFG", "The BFG is a 1982 children's book written by British novelist Roald Dahl",                                         'image6.jpg', '3000', '0', '2', '1', '5', '9781444907956', 'Bloomsbury', '2000-06-20'),
+(1,"The Horse and His Boy", "The Horse and His Boy is a novel for children by C. S. Lewis",                                       'image7.jpg', '7500', '3', '3', '1', '5', '9781444907957', 'Bloomsbury', '2001-02-17'),
+
+(2,"Career of Evil", "it is a fantasy novel written by British author J. K. Rowling.",                                             'image8.jpg', '6000', '3', '1', '1', '10', '9781444907958', 'Bloomsbury', '1999-01-06'),
+(2,"Lethal White", "it is a fantasy novel written by British author J. K. Rowling.",                                               'image9.jpg', '7500', '3', '2', '1', '5', '9781444907959', 'Bloomsbury', '1830-07-17'),
+(2,"Very Good Lives", "it is a fantasy novel written by British author J. K. Rowling.",                                            'image10.jpg', '7500', '3', '3', '1', '5', '9781444907910', 'Bloomsbury', '1890-05-04');
+
+INSERT INTO user
+(id,username,roles,email,password) VALUES
+(1,"Sachin901","[]","duminda.g.k@gmail.com","$argon2id$v=19$m=65536,t=4,p=1$eThHZUdGa1R5NU9HUjFQdw$Ka4V1rVVUnymCUmTt1CLVAaojmX7FqxamymdiIxJoIM");
+

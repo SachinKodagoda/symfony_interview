@@ -3,6 +3,10 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('resources/css/book_index.css') }}">{% endblock %}
 
+{% block navbar %}
+    {{ include('inc/navbar.html.twig') }}
+{% endblock %}
+
 {% block body %}
     {% for message in app.flashes('success') %}
         <div class="ui green message custom_flash hide_me_in">{{ message }}</div>
@@ -12,7 +16,8 @@
         <div class="ui top attached tabular menu">
             <a class="{{ active=='home' ? 'active custom_head' : '' }} item" href="{{ path('book.index') }}">All</a>
             {% for category in categories %}
-                <a class="{{ active==category.id ? 'active custom_head' : '' }} item" href="{{ path('book.index') }}?category={{ category.id }}">{{ category.name }}</a>
+                <a class="{{ active==category.id ? 'active custom_head' : '' }} item"
+                   href="{{ path('book.index') }}?category={{ category.id }}">{{ category.name }}</a>
             {% endfor %}
 
             <div class="right menu">
@@ -33,7 +38,7 @@
                         </a>
                         <div class="content">
                             <div class="header">{{ book.name }}</div>
-                            <div class="meta">author</div>
+                            <div class="meta">{{ book.author.name }}</div>
                             <div class="description">
                                 {{ book.description }}
                             </div>
@@ -43,22 +48,17 @@
                             <div class="ui star rating" data-rating="{{ book.rating }}"></div>
                         </div>
                         <div class="extra content">
-                            <span class="right floated">{{ book.price }} LKR</span>
-                            <span>
-                        <i class="user icon"></i>75 sales
-                    </span>
+                            <span class="left floated">{{ book.price }} LKR</span>
                         </div>
-                        {#<div>#}
-                        {#  <form action="{{ path('book.destroy',{ id : book.id }) }}" method="post">#}
-                        {#      <input type="hidden" name="_method" value="DELETE"/>#}
-                        {#      <input type="submit" value="OK">#}
-                        {#  </form>#}
-                        {#</div>#}
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('inc/footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}

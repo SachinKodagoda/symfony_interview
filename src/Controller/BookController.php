@@ -51,7 +51,8 @@ class BookController extends AbstractController
     public function create()
     {
         return $this->render('book/create.html.twig', [
-            'active' => 'create'
+            'active' => 'create',
+            'cart_count' => 0
         ]);
     }
 
@@ -105,7 +106,8 @@ class BookController extends AbstractController
     public function edit()
     {
         return $this->render('book/create.html.twig', [
-            'active' => 'add'
+            'active' => 'add',
+            'cart_count' => 0
         ]);
     }
 
@@ -116,7 +118,8 @@ class BookController extends AbstractController
     public function update()
     {
         return $this->render('book/create.html.twig', [
-            'active' => 'add'
+            'active' => 'add',
+            'cart_count' => 0
         ]);
     }
 

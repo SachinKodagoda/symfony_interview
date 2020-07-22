@@ -1,5 +1,4 @@
 <div class="company">
-
     <div class="company_flex">
         <div class="company_flex_left">
             <img src="{{ asset('resources/images/headset.svg') }}" class="company_headset" alt="headset"/>
@@ -9,12 +8,18 @@
         <img src="{{ asset('resources/images/logo2.jpg') }}" class="company_logo" alt="logo"/>
         <div>
             <div class="cart_cover">
-                <div class="added_items">{{ cart_count }}</div>
-                <img src="{{ asset('resources/images/cart1.svg') }}" class="company_cart" alt="cart"/><br/>
+                <div class="added_items">{{ cart_count | default('') }}</div>
+                <img src="{{ asset('resources/images/cart1.svg') }}" class="company_cart" alt="cart"/>
+                <div class="company_add_to_cart">My Cart</div>
+                <a href="{{ path('logout') }}" class="ui primary button"><i class="user icon"></i>LOGOUT</a>
+                {% if app.user %}
+                    <div class="user_email">{{ app.user.email }}</div>
+                {% endif %}
             </div>
-            <span class="company_add_to_cart">My Cart</span><br/>
         </div>
+
     </div>
     <div class="company_border_cover1"></div>
     <div class="company_border_cover2"></div>
+
 </div>

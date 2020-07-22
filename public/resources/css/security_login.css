@@ -1,0 +1,23 @@
+.customLoginFormCover{
+    display: flex;
+    width: 100%;
+    min-height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.customLoginForm{
+    width: 300px;
+    margin: auto;
+}
+
+.errormessage{
+    color: red;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.makeMeCenter{
+    margin: auto !important;
+    display: block !important;
+}

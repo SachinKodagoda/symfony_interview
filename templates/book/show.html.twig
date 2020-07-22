@@ -3,6 +3,11 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('resources/css/book_show.css') }}">{% endblock %}
 
+
+{% block navbar %}
+    {{ include('inc/navbar.html.twig') }}
+{% endblock %}
+
 {% block body %}
     <div class="ui breadcrumb custom_breadcrumb">
         <a class="section" href="{{ path('book.index') }}">Home</a>
@@ -13,7 +18,7 @@
         <div class="ui two column centered grid">
             <div class="four column centered row">
                 <div class="column">
-                    <img src="{{ asset('resources/images/') }}{{ book.image }}" alt="book">
+                    <img src="{{ asset('resources/images/') }}{{ book.image }}" alt="book" class="show_image">
                 </div>
                 <div class="column">
                     <h2>{{ book.name }}</h2>
@@ -47,10 +52,29 @@
                             </span>
                         {% endif %}
                     </p>
+
+                    <div class="ui buttons custom_margin_right">
+                        <button class="ui button custom_blue" id="add_btn"><i class="icon plus"></i></button>
+                        <div class="or"></div>
+                        <div class="ui button custom_blue" id="minus_btn"><i class="icon minus"></i></div>
+                    </div>
+                    <button class="circular custom_blue ui icon button custom_margin_right" id="item_to_cart">0</button>
+                    <form action="{{ path('book.store') }}" class="custom_form_for_shopping" method="POST" id="cart_form">
+                        <input type="hidden" name="book_id" value="{{ book.id }}"/>
+                        <input type="hidden" name="book_count" id="book_counter"/>
+                        <div class="ui primary button" id="add_me_to_cart">
+                            <i class="shop icon"></i> Add to cart
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {{ include('inc/footer.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}

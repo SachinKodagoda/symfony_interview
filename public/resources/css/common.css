@@ -1,3 +1,7 @@
+.company{
+    width: 100vw;
+}
+
 .company_flex {
     display: flex;
     align-items: center;
@@ -26,8 +30,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    right: -0.5rem;
-    top: 60%;
+    left: 4rem;
+    top: 3rem;
     transform: translateY(-50%);
     padding: 1rem;
     width: 3rem;
@@ -40,13 +44,17 @@
 .company_cart {
     width: 5rem;
     height: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .company_add_to_cart {
     font-size: 2rem;
     font-family: 'Galada', cursive;
     color: #172B5C;
-    margin-top: .5rem;
+    padding-top: 6rem;
+    padding-bottom: 1rem;
     display: block;
 }
 
@@ -58,16 +66,57 @@
 
 .company_border_cover1 {
     height: 1.2rem;
-    background: rgb(34, 64, 137);
+    background: #172B5C;
 }
 
 .company_border_cover2 {
     margin-top: .5rem;
     height: .4rem;
-    background: rgb(34, 64, 137);
+    background: #172B5C;
 }
 
 .company_logo {
     height: 14rem;
     width: auto;
+}
+
+
+.sp_container {
+    width: 100vw;
+}
+
+.cppCurvedSvgHansa{
+    display: block;
+    margin: 0;
+}
+
+.footer_top {
+    width: 100vw;
+    height: 1.2rem;
+    margin-bottom: 0rem;
+    background: #172B5C;
+}
+
+.footer {
+    width: 100vw;
+    background: #172B5C;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.all_right {
+    font-family: 'Galada', cursive;
+    margin-top: 1rem;
+}
+
+.footer_inner {
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_email{
+    padding-top: .5rem;
 }

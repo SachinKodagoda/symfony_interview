@@ -2,12 +2,6 @@
     padding-top: .5rem;
 }
 
-.custom_breadcrumb{
-    padding-left: 1rem;
-    padding-top: 1rem;
-
-}
-
 .custom_avail_yes{
     color: green;
 }
@@ -34,4 +28,30 @@
 
 .custom_common_right{
     color: green;
+}
+
+.custom_margin_right{
+    margin-right: 1rem !important;
+}
+
+.ui.breadcrumb a.section{
+    padding: 1rem !important;
+}
+
+.custom_blue{
+    background: #172B5C !important;
+    color: #ffffff !important;
+}
+
+.custom_blue:active {
+    background: red !important;
+}
+
+.custom_form_for_shopping{
+    display: inline;
+}
+
+.show_image{
+    max-height: 30rem;
+    width: auto;
 }
